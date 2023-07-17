@@ -1,0 +1,887 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Waktu pembuatan: 20 Sep 2022 pada 12.54
+-- Versi server: 10.4.22-MariaDB
+-- Versi PHP: 8.1.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `db_erise`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `assignments`
+--
+
+CREATE TABLE `assignments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attachment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `assignments`
+--
+
+INSERT INTO `assignments` (`id`, `title`, `classroom_id`, `content`, `attachment`, `created_at`, `updated_at`) VALUES
+(1, 'kkzkksdkaskdas', 6, '<p>masbdas</p><p>das</p><p>das</p>', 'tugas_632851786ffd0.png', '2022-09-19 04:24:40', NULL),
+(2, 'Tugas Pertama', 7, '<p>Deskripsi</p>', '', '2022-09-19 05:21:50', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `autographs`
+--
+
+CREATE TABLE `autographs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `autograph` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `autographs`
+--
+
+INSERT INTO `autographs` (`id`, `user_id`, `autograph`) VALUES
+(1, 32, 'TTD_hAFIZH.png'),
+(2, 34, 'TTD_Pocrone.png');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `classifications`
+--
+
+CREATE TABLE `classifications` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `class` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sub_class` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `group_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `classifications`
+--
+
+INSERT INTO `classifications` (`id`, `class`, `sub_class`, `group_id`) VALUES
+(1, 'DM', 'KM', 2),
+(2, 'BS', 'SV', 1),
+(3, 'BS', 'GN', 3),
+(4, 'KR', 'CV', 4),
+(5, 'KR', 'TW', 2),
+(6, 'KG', 'ZW', 3),
+(7, 'MH', 'SA', 1),
+(8, 'BD', 'TK', 1),
+(9, 'ET', 'HR', 3),
+(10, 'MP', 'UG', 5),
+(11, 'BN', 'CR', 2),
+(12, 'CV', 'BW', 1),
+(13, 'MH', 'ME', 1),
+(14, 'AF', 'WS', 2),
+(15, 'SV', 'KE', 2),
+(16, 'AG', 'CO', 4),
+(17, 'ZM', 'PK', 3),
+(18, 'PW', 'EG', 1),
+(19, 'SI', 'PL', 2),
+(20, 'TW', 'TH', 5),
+(21, 'GQ', 'HN', 4),
+(22, 'NE', 'SV', 2),
+(23, 'IT', 'PY', 3),
+(24, 'AO', 'BH', 3),
+(25, 'CV', 'AU', 2),
+(26, 'CG', 'PE', 2),
+(27, 'MO', 'BN', 3),
+(28, 'QA', 'EC', 3),
+(29, 'RS', 'WF', 3),
+(30, 'LB', 'BO', 1),
+(31, 'd', 'd', 9),
+(32, 'A', 'B', 11);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `classrooms`
+--
+
+CREATE TABLE `classrooms` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `class_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `class_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `classrooms`
+--
+
+INSERT INTO `classrooms` (`id`, `class_name`, `user_id`, `class_code`) VALUES
+(1, 'laborum', 5, 'PHVVN'),
+(2, 'doloribus', 4, 'ACWQN'),
+(3, 'aut', 3, 'NHMAW'),
+(4, 'cupiditate', 5, 'NPGB3'),
+(5, 'doloribus', 4, 'HEYN2'),
+(6, 'God', 31, 'YYNBM'),
+(7, 'Kelas Percobaaan', 33, 'WK1C3');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `dispositions`
+--
+
+CREATE TABLE `dispositions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `sender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `recevier` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `instruction` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inbox_mail_id` bigint(20) UNSIGNED NOT NULL,
+  `status` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `dispositions`
+--
+
+INSERT INTO `dispositions` (`id`, `date`, `sender`, `recevier`, `instruction`, `inbox_mail_id`, `status`) VALUES
+(1, '1985-03-31', 'Agnes Pudjiastuti', 'Tira Permata', 'Et ut aspernatur odio sunt quo qui. Fugiat quaerat consequuntur illum. Mollitia temporibus quaerat ullam vitae qui impedit.', 12, 1),
+(2, '2015-10-10', 'Umi Nurdiyanti', 'Galur Prabu Maheswara S.Kom', 'Numquam numquam officia qui expedita est id. Accusantium inventore molestiae atque ut nihil quia. Consequatur aut officiis in nostrum. Dolores consequatur dignissimos accusantium eos illum quasi eum.', 19, 1),
+(3, '1982-08-19', 'Makuta Jasmani Simanjuntak', 'Panca Eman Pratama', 'Error suscipit aut officiis et et occaecati fugit. Ipsa eius saepe dolorem dolore est fugiat. Voluptas consequatur veritatis aut consequatur. Sequi itaque aperiam rerum ea.', 27, 0),
+(4, '2004-05-25', 'Bakiadi Kurniawan', 'Ira Tami Nuraini S.Farm', 'Cum molestias enim ut repudiandae quia delectus unde iste. Nam animi aperiam iste accusamus ipsam. Ut nulla odit minima perferendis dignissimos. Quae pariatur veritatis possimus voluptas.', 7, 1),
+(5, '1988-03-13', 'Indah Ika Utami', 'Ophelia Nurdiyanti', 'Est perferendis corporis harum corrupti vero culpa omnis. Autem eos voluptatem voluptates et. Quod possimus debitis accusamus ullam eum dignissimos est. Nemo officiis quo maxime.', 29, 1),
+(6, '1977-03-01', 'Balangga Mursinin Uwais M.Farm', 'Karja Jindra Mansur S.IP', 'Aut non dolores sunt ut eum nostrum hic. Repellendus veniam in molestiae quod sit harum. Repudiandae molestiae occaecati placeat veniam laboriosam atque iste maiores. Eum fuga quia nemo sint.', 30, 1),
+(7, '1994-07-18', 'Farah Agustina', 'Ajiono Caturangga Mansur', 'Tempore quisquam est reprehenderit non. Necessitatibus ex assumenda alias eum nesciunt qui. Fuga quo consequuntur aut quis illum reiciendis libero. Laudantium ad enim minus neque consequatur.', 4, 0),
+(8, '1997-07-01', 'Ida Fitriani Melani', 'Eman Siregar M.Pd', 'Expedita dolor nihil laudantium. Est cum et velit magnam voluptatum dicta voluptates. Dolor aspernatur ipsa quia et cumque ut provident.', 7, 0),
+(9, '1978-03-14', 'Maria Lestari S.Psi', 'Salwa Vanya Pudjiastuti', 'Et laudantium sequi assumenda. Sapiente optio quibusdam ad. Eum natus non quod quis qui aperiam. Et id dolor aut asperiores et mollitia. Aut animi ex at ipsam. Ducimus qui nemo non quia.', 7, 0),
+(10, '2002-11-24', 'Kamal Utama M.M.', 'Rina Salwa Suryatmi', 'Qui dicta laborum consequatur velit facere. Ut laborum ex et quia autem aut vitae non. Officiis nemo voluptatem fugit vel. Temporibus laboriosam voluptate error enim sunt sed vero.', 5, 0),
+(11, '2014-11-30', 'Labuh Sihombing', 'Padma Fujiati M.Ak', 'Quia facere itaque blanditiis. Id delectus qui architecto aspernatur vel quidem officiis. Rerum voluptatem libero ad qui.', 17, 0),
+(12, '2004-10-29', 'Hani Uyainah', 'Putu Wibowo S.Ked', 'Ea nisi animi est suscipit. Ipsam perferendis praesentium voluptate aut asperiores consequatur enim. Dicta vel et ratione totam voluptas reiciendis nihil.', 29, 1),
+(13, '1988-01-21', 'Padma Mulyani', 'Marsudi Adriansyah', 'Sit nisi voluptate tenetur inventore consequatur quia. Animi distinctio unde unde quod id pariatur. Aliquam accusantium illum illum aut deserunt.', 25, 1),
+(14, '1987-02-06', 'Bala Nugroho', 'Agnes Siti Suartini S.Pd', 'Maxime et dolores facere. Est rerum labore mollitia non quas sit. Quos similique quia incidunt placeat quisquam autem consequatur.', 5, 1),
+(15, '1997-06-21', 'Catur Firmansyah', 'Kuncara Waluyo', 'Quod optio quis culpa exercitationem. Qui nisi tempora assumenda molestias vel perferendis.', 11, 0),
+(16, '1976-03-16', 'Capa Iswahyudi', 'Maimunah Palastri S.E.I', 'Illo reiciendis nostrum corrupti et beatae laboriosam. Possimus eligendi quam sapiente non ipsa nisi. Sit at impedit molestiae autem dolor architecto.', 12, 1),
+(17, '2022-02-05', 'Zalindra Hassanah S.H.', 'Indah Mulyani', 'Deserunt qui aut pariatur sint. Commodi ut ipsum porro officia et. Omnis numquam deleniti alias omnis. Eos in qui perspiciatis velit veniam autem.', 2, 0),
+(18, '1993-06-23', 'Dian Novitasari', 'Lidya Oktaviani S.Kom', 'Reiciendis voluptatum fuga et magni repellendus. Architecto aspernatur harum dolorum provident qui reiciendis deserunt et. Maiores at est alias aut.', 25, 1),
+(19, '1998-12-20', 'Rachel Usada', 'Asmadi Widodo S.Ked', 'Et autem cupiditate id dicta. Sit eveniet placeat dignissimos temporibus dolorem omnis unde. Adipisci ullam voluptas officia.', 27, 0),
+(20, '2019-07-15', 'Kuncara Adika Kusumo S.Sos', 'Cakrabuana Samosir', 'Enim mollitia eius quia. Nobis et molestiae non eius unde animi illum hic. Dolor id quasi reprehenderit. Sed est reprehenderit nihil eos sed rerum incidunt incidunt.', 26, 0),
+(21, '1975-12-18', 'Intan Genta Yuliarti', 'Maman Hamzah Suwarno S.Pd', 'Delectus nesciunt voluptas et dolores quo sapiente. Voluptas magni ipsam reiciendis at et est porro. Culpa unde odit qui quae possimus eos eligendi. Rerum repellendus modi sit nemo.', 10, 0),
+(22, '2017-04-21', 'Fathonah Tina Zulaika M.M.', 'Vanya Sakura Sudiati S.H.', 'Minus voluptas adipisci id quam voluptatem officiis. Vero voluptatem fuga deleniti illo dolor. Aliquid ut et quo debitis autem.', 7, 1),
+(23, '1981-08-21', 'Olga Suwarno', 'Ozy Margana Marpaung S.I.Kom', 'Tempore nobis odio consequatur fugit cupiditate et. Suscipit consectetur modi veritatis iusto. Rerum est quam aliquid qui perferendis quia quidem quia. Quod dolores mollitia dolor quos.', 10, 0),
+(24, '1979-09-11', 'Belinda Nasyiah', 'Laras Astuti', 'Illum alias laborum fugit ex iure eius. Voluptatem dicta aliquam dolore ratione ratione. Ad voluptas et qui praesentium.', 20, 0),
+(25, '1975-06-04', 'Wardi Wibowo S.I.Kom', 'Paiman Haryanto', 'Ratione a hic sit in. Quas hic rerum numquam autem error. Explicabo ut adipisci illo qui aut odio. Eum laborum qui recusandae et. Reprehenderit nam impedit tenetur laudantium cumque minima.', 26, 1),
+(26, '1991-04-26', 'Heru Mandala', 'Safina Purwanti M.TI.', 'Qui quia quod tempora et. Voluptatum asperiores aut consequatur dignissimos illo. Ducimus esse porro aut non sunt quod.', 22, 1),
+(27, '2006-02-28', 'Umi Handayani', 'Diah Widiastuti', 'Iste quas voluptatem harum consequatur sit id. Nulla voluptatem consequatur culpa sed voluptate. Dolores aut non sunt aut reiciendis dolor debitis.', 9, 0),
+(28, '1993-01-15', 'Labuh Kusumo', 'Ghaliyati Nasyidah', 'Accusamus iure quidem sed nihil ipsam aspernatur. Quam tempora odio quaerat odit perspiciatis. Fugit eaque officiis quas animi possimus.', 10, 0),
+(29, '2011-01-15', 'Hartana Uwais S.Gz', 'Timbul Suwarno', 'Amet est consequatur consequatur omnis alias. Eos ipsa nam quis atque. Dolor ut pariatur aut distinctio impedit. Labore iure quidem perspiciatis esse illum vitae harum.', 14, 0),
+(30, '1986-07-25', 'Umi Anggraini M.M.', 'Prasetya Jaswadi Dabukke S.Pt', 'Quaerat possimus dolores in repellat qui earum. Et perferendis necessitatibus et molestiae et earum. Ut eius est eum eos qui a. Aperiam at nostrum adipisci magnam.', 22, 1),
+(31, '2022-09-19', 'Sekretaris - hAFIZH', 'Pimpinan', 'd', 31, 0),
+(32, '2022-09-19', 'Pimpinan - hAFIZH', 'Arsiparis', 'dqdq', 31, 0),
+(33, '2022-09-19', 'Arsiparis - hAFIZH', 'Pimpinan', 'dw', 31, 0),
+(34, '2022-09-19', 'Sekretaris - Pocrone', 'Pimpinan', 'Lanjutkan', 32, 0),
+(35, '2022-09-19', 'Arsiparis - Pocrone', 'Pimpinan', 'Lanjutkan', 33, 0),
+(36, '2022-09-19', 'Sekretaris - Pocrone', 'Pimpinan', 'Pimpinan', 33, 0),
+(37, '2022-09-19', 'Pimpinan - Pocrone', 'Arsiparis', 'Ko', 33, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `groups`
+--
+
+CREATE TABLE `groups` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `groupname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `LeaderGroupID` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `groups`
+--
+
+INSERT INTO `groups` (`id`, `classroom_id`, `groupname`, `LeaderGroupID`) VALUES
+(1, 9, 'harum', 10),
+(2, 15, 'ratione', 13),
+(3, 7, 'dolore', 30),
+(4, 27, 'sequi', 16),
+(5, 24, 'optio', 28),
+(10, 6, 'supa', 32),
+(11, 7, 'Kelompok 1', 34);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `group_assignments`
+--
+
+CREATE TABLE `group_assignments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `group_id` bigint(20) UNSIGNED NOT NULL,
+  `assignments_id` bigint(20) UNSIGNED NOT NULL,
+  `value` int(11) DEFAULT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `group_assignments`
+--
+
+INSERT INTO `group_assignments` (`id`, `group_id`, `assignments_id`, `value`, `comment`) VALUES
+(1, 10, 1, 2, 'd'),
+(2, 11, 2, 80, 'da');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `inbox_mails`
+--
+
+CREATE TABLE `inbox_mails` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `mail_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
+  `sender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_attribute` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_about` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_summary` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` smallint(6) NOT NULL,
+  `mail_location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `classification_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `retention_status` smallint(6) DEFAULT NULL,
+  `active_year` int(11) DEFAULT NULL,
+  `inactive_year` int(11) DEFAULT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `group_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `inbox_mails`
+--
+
+INSERT INTO `inbox_mails` (`id`, `mail_number`, `date`, `time`, `sender`, `mail_attribute`, `mail_about`, `mail_summary`, `status`, `mail_location`, `classification_id`, `file`, `retention_status`, `active_year`, `inactive_year`, `classroom_id`, `group_id`, `user_id`) VALUES
+(1, '4539-3132-8659-9823', '2009-09-29', '14:17:22', 'UD Pratama Hariyah', 'Rahasia', 'sed', 'Sapiente ab consequatur minima in laudantium. Quae ab sint quis perferendis consequatur. Facilis autem qui quidem veniam consectetur incidunt. Aut odio maiores praesentium beatae iure explicabo enim.', 0, 'TZ', 4, 'default.png', 0, 2022, 2033, 1, 4, 20),
+(2, '4024-0071-6574-1876', '1997-12-02', '06:13:58', 'PT Rahmawati (Persero) Tbk', 'Biasa', 'doloribus', 'Soluta consectetur ut et est. Laudantium inventore odit eveniet omnis. Et sunt beatae et architecto.', 2, 'ID', 13, 'default.png', 0, 2022, 2033, 1, 5, 19),
+(3, '4539-7890-0076-4993', '1981-08-29', '12:14:56', 'UD Fujiati Pratiwi', 'Penting', 'neque', 'Ipsam quidem deleniti eum enim voluptatem rerum adipisci. Occaecati est omnis molestiae perspiciatis alias quo quas. Animi aliquam natus doloribus facilis beatae. Sit nihil nobis dolores labore dolorum.', 1, 'CY', 4, 'default.png', 0, 2022, 2033, 4, 3, 3),
+(4, '4532-3158-6470-0381', '1992-05-28', '04:27:07', 'UD Firgantoro Tbk', 'Rahasia', 'ut', 'Ea libero placeat laudantium officiis illum dolorem sint quia. Similique et iure tempora eius quod non aliquid. Sed animi similique illo. Dolore esse vitae cum possimus tempora molestiae.', 3, 'VA', 26, 'default.png', 3, 2022, 2033, 2, 5, 10),
+(5, '4532-0462-8515-2288', '2018-12-17', '08:58:20', 'Perum Purwanti', 'Biasa', 'qui', 'Iste harum nostrum culpa in accusamus aut. Illo accusamus aperiam nesciunt non laudantium. Voluptatem dolore optio incidunt. Voluptas quo odit sed aut atque voluptatem.', 1, 'MP', 6, 'default.png', 0, 2022, 2033, 5, 2, 15),
+(6, '4929-1142-3909-5267', '2016-12-23', '22:21:22', 'PT Kuswandari Narpati (Persero) Tbk', 'Rahasia', 'vero', 'Exercitationem voluptatem natus quae quia cum consectetur. Autem aut qui laudantium excepturi quas fugit alias. Laboriosam et tempora quidem.', 1, 'SD', 2, 'default.png', 3, 2022, 2033, 4, 5, 28),
+(7, '4539-0701-5230-8107', '1995-10-30', '10:48:58', 'UD Winarsih Jailani', 'Biasa', 'impedit', 'Adipisci sapiente et numquam porro labore. Quia omnis eveniet corporis autem dolorem. Consequatur temporibus earum et facilis expedita sunt.', 3, 'SD', 13, 'default.png', 0, 2022, 2033, 4, 5, 8),
+(8, '4024-0071-1663-4287', '1981-02-15', '17:55:22', 'PD Siregar Wahyudin', 'Rahasia', 'id', 'Inventore eum quidem non repudiandae delectus. Laboriosam ea est laboriosam minus. Doloremque voluptas quidem non harum dolore ipsam rerum consequatur.', 2, 'BN', 3, 'default.png', 3, 2022, 2033, 3, 4, 12),
+(9, '4916-6549-1774-3345', '1981-09-28', '11:56:48', 'CV Pranowo Saragih', 'Biasa', 'molestias', 'Minus in tempora at. Aut rem qui possimus doloremque. Excepturi voluptatum eos ipsum harum sed dolorem minima enim. Vitae culpa quaerat odit quas et nesciunt qui.', 2, 'KG', 21, 'default.png', 0, 2022, 2033, 2, 2, 1),
+(10, '4929-5206-7447-9982', '1983-05-21', '22:18:39', 'CV Usamah Tbk', 'Biasa', 'voluptatibus', 'Quas eos quo ut dolore. Non quisquam fuga quaerat occaecati. Cum blanditiis consequatur saepe.', 2, 'MX', 20, 'default.png', 2, 2022, 2033, 1, 5, 22),
+(11, '4929-2465-1321-8312', '2011-06-18', '03:26:09', 'PD Susanti Handayani', 'Penting', 'quod', 'At vel eligendi assumenda quidem minus debitis minus. Voluptatem cum ex ullam voluptates. Laudantium dolor ad laudantium voluptas error ex necessitatibus minima. Sapiente qui eum repellat amet laudantium et suscipit.', 2, 'GW', 12, 'default.png', 3, 2022, 2033, 1, 1, 3),
+(12, '4556-7182-2345-1664', '1979-12-25', '08:25:20', 'PT Hariyah', 'Rahasia', 'hic', 'Magnam quia ipsam animi commodi. Aut nesciunt exercitationem qui sit. Ratione delectus et qui placeat.', 2, 'GH', 2, 'default.png', 2, 2022, 2033, 1, 2, 7),
+(13, '4485-1950-0094-3054', '1998-01-27', '00:05:05', 'PT Ardianto Firmansyah Tbk', 'Biasa', 'autem', 'Non officiis aliquid error sed rerum. Possimus officiis corporis nobis.', 1, 'MN', 21, 'default.png', 3, 2022, 2033, 4, 2, 25),
+(14, '4556-1271-6673-1803', '1980-05-31', '17:13:52', 'PT Agustina Tbk', 'Rahasia', 'laborum', 'Voluptatibus maxime quis possimus quaerat officia in debitis non. Officia labore deleniti omnis aspernatur rem repudiandae omnis dignissimos. Fuga mollitia optio tempore suscipit dicta excepturi. Aspernatur dolor nostrum aliquam quis nulla deleniti veritatis.', 0, 'TF', 1, 'default.png', 1, 2022, 2033, 5, 4, 1),
+(15, '4916-8121-7955-0416', '1970-04-12', '16:17:32', 'Perum Hariyah Anggraini', 'Penting', 'ut', 'Ad veniam et sit quis. In at assumenda commodi eos sint quis. Et eos voluptas quisquam est.', 0, 'VU', 21, 'default.png', 3, 2022, 2033, 4, 2, 17),
+(16, '4928-7131-2262-3969', '2011-04-16', '11:07:38', 'PT Santoso Suryono', 'Biasa', 'eum', 'Provident facilis sit et illum. Quidem deserunt amet ut cumque porro quam iste. Quo animi vero consequatur voluptates voluptate.', 2, 'NG', 28, 'default.png', 3, 2022, 2033, 1, 2, 2),
+(17, '4845-2873-2294-4467', '1984-12-21', '23:10:40', 'UD Purnawati Padmasari Tbk', 'Rahasia', 'quia', 'Id saepe repudiandae sed. Iusto aut aliquid veritatis eius itaque vel alias. Sint in at et saepe aliquid doloremque error. Quo qui autem ea.', 2, 'KI', 10, 'default.png', 2, 2022, 2033, 5, 2, 21),
+(18, '4539-1308-0611-9019', '2010-05-05', '05:12:41', 'Perum Purnawati (Persero) Tbk', 'Biasa', 'quia', 'Sunt et rerum libero assumenda. Consequatur dignissimos non aperiam minus.', 2, 'AI', 19, 'default.png', 1, 2022, 2033, 5, 5, 27),
+(19, '4716-2601-9293-0680', '1989-09-26', '11:28:14', 'Perum Hidayanto Rajasa (Persero) Tbk', 'Biasa', 'voluptatum', 'Neque aut nihil sint sint. Voluptate et numquam et sed nihil eaque. Aliquid deserunt tenetur quis eaque sed dolores.', 2, 'CZ', 1, 'default.png', 1, 2022, 2033, 3, 5, 15),
+(20, '4929-5794-0123-7725', '1990-11-27', '09:47:30', 'Perum Suryono Wulandari', 'Penting', 'dolores', 'Vitae libero reiciendis beatae facilis recusandae error. Perferendis est odio quaerat perferendis voluptatem velit saepe sequi. Aut est rerum nihil. Nulla tempore eveniet ea voluptatem itaque. Et quidem repellendus eos non voluptatem.', 3, 'CZ', 1, 'default.png', 2, 2022, 2033, 1, 1, 15),
+(21, '4976-9165-6369-3885', '2014-09-30', '03:30:24', 'UD Hassanah (Persero) Tbk', 'Penting', 'voluptatum', 'Excepturi et et dolorum quod est. Voluptatem aliquam et quo voluptatem. Ut quas dolor quos quae nobis.', 3, 'SR', 11, 'default.png', 1, 2022, 2033, 4, 1, 21),
+(22, '4199-7921-3948-3791', '2019-02-22', '19:14:13', 'Perum Rajata Tbk', 'Rahasia', 'deleniti', 'Deserunt eum architecto officiis hic. Quia voluptas voluptate maiores culpa quis mollitia fugiat. Adipisci nihil ut rerum ut iure quidem laboriosam. Debitis omnis placeat fugit voluptatem cupiditate inventore.', 1, 'TF', 22, 'default.png', 2, 2022, 2033, 3, 1, 17),
+(23, '4929-6965-6131-9190', '2004-04-24', '11:50:42', 'PD Astuti Tbk', 'Rahasia', 'eos', 'Magnam dolor fugiat minus. Velit delectus molestias aliquam aut voluptatibus. Eaque cupiditate ut ab cumque saepe assumenda. Ad quae quis veniam est quia.', 2, 'KE', 22, 'default.png', 3, 2022, 2033, 5, 4, 27),
+(24, '4532-3172-5159-7347', '1972-12-25', '06:46:03', 'PD Lestari (Persero) Tbk', 'Biasa', 'tempora', 'Assumenda aspernatur occaecati earum dolor nemo rem impedit. Ullam quod maiores qui eius molestiae non. Cumque rem nam illo ipsum molestiae placeat. Sit vero et sapiente consequatur.', 2, 'MP', 19, 'default.png', 2, 2022, 2033, 3, 2, 19),
+(25, '4916-5592-1831-6099', '2004-03-22', '06:35:32', 'PD Yulianti Tbk', 'Biasa', 'sed', 'Nihil et maiores earum aut. Qui sed beatae sapiente et. Maiores ipsa odio corrupti qui explicabo deserunt cumque. Architecto tenetur ut quia nesciunt ad.', 0, 'VC', 19, 'default.png', 0, 2022, 2033, 4, 5, 12),
+(26, '4916-1575-9158-8911', '1972-11-12', '23:58:42', 'UD Wijaya', 'Biasa', 'deserunt', 'Vel earum esse quas quasi. Unde cumque ipsa est molestiae esse itaque.', 0, 'PL', 28, 'default.png', 3, 2022, 2033, 4, 3, 16),
+(27, '4910-6523-3940-6414', '2017-01-09', '11:39:53', 'Perum Yuniar Latupono', 'Penting', 'quos', 'Dolor nihil provident quae dolorum. Quis molestias et ipsum nostrum.', 1, 'ER', 15, 'default.png', 2, 2022, 2033, 4, 2, 25),
+(28, '4916-5977-3946-2075', '1993-10-03', '06:30:02', 'UD Marbun (Persero) Tbk', 'Rahasia', 'ipsa', 'Rerum ea eaque voluptatum necessitatibus nulla possimus recusandae cumque. Dolorum quia laudantium iste tempora. Atque laboriosam aut distinctio vel ut qui.', 2, 'MC', 1, 'default.png', 2, 2022, 2033, 2, 3, 13),
+(29, '4278-8162-0670-1357', '2012-04-11', '06:34:41', 'UD Hariyah', 'Biasa', 'quod', 'Est aut explicabo nemo molestiae eius et eos. Hic dignissimos possimus quia culpa quia. Iusto beatae ea dolor exercitationem.', 1, 'VA', 5, 'default.png', 2, 2022, 2033, 3, 4, 22),
+(30, '4929-3706-0562-4193', '1975-01-07', '09:01:13', 'PT Haryanto Winarsih (Persero) Tbk', 'Penting', 'aut', 'Doloribus distinctio voluptatibus vero itaque ab non. Possimus et est pariatur. Iure odit voluptate alias hic maxime natus.', 2, 'MD', 8, 'default.png', 0, 2022, 2033, 1, 3, 21),
+(31, 'a', '2022-09-07', '11:49:00', 'a', 'Segera', 'a', 'a', 1, 'asd', 1, NULL, 1, 2022, 2000, 6, 9, 32),
+(32, '0/1/2020', '2022-09-16', '12:26:00', 'PT', 'Segera', 'perihal', 'Isi Ringkas', 1, NULL, NULL, 'inbox_1663590438.png', NULL, NULL, NULL, 7, 11, 34),
+(33, 'Surat Masuk', '2022-12-31', '12:42:00', 'Pengirim', 'Segera', 'Perihak Surat', 'Ringkas', 1, 'RAK B', 4, NULL, 2, 2022, 2024, 7, 11, 34);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `lessons`
+--
+
+CREATE TABLE `lessons` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attachment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `lessons`
+--
+
+INSERT INTO `lessons` (`id`, `title`, `classroom_id`, `content`, `attachment`, `created_at`, `updated_at`) VALUES
+(1, 'Materi 1', 6, '<p>sadsad</p><p>as</p><p>das</p><p>das</p>', '', '2022-09-19 04:24:16', NULL),
+(2, 'Materi 1', 7, '<p>deskrpisinya</p>', '', '2022-09-19 05:21:22', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mail_concepts`
+--
+
+CREATE TABLE `mail_concepts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `mail_concept` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `group_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `mail_concepts`
+--
+
+INSERT INTO `mail_concepts` (`id`, `user_id`, `mail_concept`, `date`, `status`, `classroom_id`, `group_id`) VALUES
+(1, 23, 'Dolores quasi fuga tenetur aut voluptatem. Sed voluptates harum magnam et sed. Autem eveniet voluptatem quisquam omnis et possimus. Voluptates id consequatur fugiat id.', '2003-10-19', 1, 3, 2),
+(2, 29, 'Excepturi ducimus fugiat quia. Rerum optio vero earum illo nihil porro qui. Pariatur illo et consequatur est.', '2008-04-07', 1, 4, 1),
+(3, 24, 'Repellendus assumenda voluptas aspernatur. Atque est et sint fugiat. Reiciendis nisi enim quia sequi enim aspernatur.', '1971-09-13', 0, 4, 5),
+(4, 23, 'Voluptatem debitis dolorem assumenda minima qui minus. Nostrum ea alias in optio minima atque. Qui magnam itaque hic quis pariatur sed ratione voluptas. Ut quo fuga expedita assumenda.', '1988-09-02', 0, 3, 4),
+(5, 21, 'Sit et libero aut saepe molestiae animi delectus. Et possimus vel earum occaecati eius aperiam. Reiciendis est at facilis facere.', '2020-11-25', 0, 2, 1),
+(6, 15, 'Et ratione laudantium dolor eum qui. Omnis voluptas sunt omnis at. Amet aliquid quam rerum omnis ut odit vel. Culpa sint aut facilis rerum.', '1994-07-30', 1, 3, 1),
+(7, 17, 'Error voluptas placeat nobis porro ad. Quo harum dolorem commodi sunt qui suscipit suscipit. Et autem eum minima quo quam mollitia a.', '2005-11-16', 0, 5, 2),
+(8, 18, 'Facilis ea et qui ipsum impedit. Laboriosam corrupti qui maiores fugit eum. Harum est sit ex delectus.', '2008-06-19', 1, 4, 5),
+(9, 5, 'Explicabo sit aliquam iste omnis quo alias qui. Magni deleniti sunt exercitationem nemo ut eveniet. Non alias quo non sunt cupiditate laborum.', '1974-10-23', 1, 3, 3),
+(10, 12, 'Nisi ut possimus optio est non. Temporibus exercitationem recusandae perferendis earum reprehenderit. Sed placeat enim laboriosam magni. Mollitia beatae sit maxime cum aliquam nihil consequatur.', '2018-03-20', 1, 3, 3),
+(11, 17, 'Velit deserunt maiores voluptas natus laboriosam nobis. Et enim voluptatibus et magnam nihil. Officia quis facilis ea quas nostrum.', '2014-11-27', 1, 3, 5),
+(12, 7, 'Consequatur inventore iusto velit harum beatae ad. Non vel ex dolorum aut laborum. Itaque doloribus eligendi suscipit ea excepturi. Laudantium est eos cupiditate neque dolor excepturi necessitatibus.', '2010-12-20', 1, 5, 5),
+(13, 28, 'Voluptas voluptas laboriosam animi velit sunt. Rerum sunt eligendi quo sit. Alias ratione neque reiciendis fugit.', '1987-05-10', 1, 5, 4),
+(14, 3, 'Tempore quo voluptas unde ipsum. Possimus illum repellendus ratione qui.', '1985-02-24', 0, 3, 5),
+(15, 27, 'Tempore totam eligendi quae necessitatibus. Tempora est consequuntur fuga recusandae maiores ad molestiae magni. Exercitationem eveniet voluptate et quibusdam.', '2012-11-28', 1, 4, 2),
+(16, 8, 'Possimus ex voluptate voluptatem magni est. Fuga necessitatibus omnis nihil eum. Esse rem dolores non rerum nobis dignissimos. Consectetur alias repellendus iste odio quos enim.', '2018-09-17', 0, 3, 2),
+(17, 13, 'Dolorem odio nisi ut laudantium sunt consectetur. Quia id quidem vel ea dolor aut nostrum. Sed culpa facilis quod aperiam consequatur.', '2009-10-05', 0, 3, 3),
+(18, 10, 'Praesentium et consequatur necessitatibus delectus laborum ut. Maxime et mollitia harum facere incidunt. Repellendus inventore ut sunt id dolore ut quo.', '1977-04-18', 0, 4, 4),
+(19, 3, 'Ipsa autem facilis perferendis aut aut. Officiis libero illo aut et quam. Amet consequuntur quo est quasi et voluptatum architecto aut.', '2012-02-20', 1, 3, 4),
+(20, 3, 'Cumque nihil quis nobis optio. Aut a maiores omnis omnis officia nihil perferendis. Quis maxime facilis nihil enim a magnam et.', '2014-12-05', 0, 4, 4),
+(21, 11, 'Eos et temporibus eum non asperiores magnam quaerat. Fuga vitae magni vel molestiae esse et.', '2018-02-07', 1, 3, 5),
+(22, 24, 'Odio nobis culpa architecto placeat harum. Ut labore pariatur quasi ad rem id autem. Ab in placeat blanditiis ipsum aut. Aut neque est enim quidem.', '2017-01-16', 1, 2, 1),
+(23, 10, 'Incidunt qui error nihil dolor consequuntur. Quis omnis qui sunt. Reprehenderit et ipsa velit consequatur nihil sit voluptatem.', '1976-08-27', 1, 4, 5),
+(24, 2, 'Eos autem doloremque libero. Quis qui sed quae asperiores autem. Ea aut provident dolor est necessitatibus. Repudiandae nulla ullam ex ut excepturi.', '2007-10-24', 1, 3, 2),
+(25, 22, 'Et laboriosam porro qui necessitatibus et. Nihil est dolorem in voluptatem perferendis perferendis. Ut omnis omnis in eos suscipit expedita et.', '1984-01-18', 0, 2, 1),
+(26, 18, 'Excepturi autem recusandae error nulla. Illum sunt sit temporibus ullam sit ipsum et.', '2013-12-19', 1, 2, 5),
+(27, 8, 'Voluptas sit omnis vel tenetur ducimus enim odio. Sunt dolore amet pariatur quasi quam deserunt. Voluptatem facilis qui aut nam tenetur.', '1982-06-25', 0, 4, 2),
+(28, 1, 'Ea voluptas temporibus quisquam. Voluptatum corrupti reprehenderit possimus consectetur dolores aut laudantium. Iure dolore facilis et qui fugiat provident ut illo. Eligendi est et ut sed qui est ut.', '1975-12-02', 1, 4, 1),
+(29, 5, 'Ducimus a itaque fugiat et consequatur sint dolor. Ipsam blanditiis animi nisi accusamus vel amet quibusdam dolor. Qui a dolore beatae voluptas animi id. Animi ea ratione quae voluptatem.', '1975-09-06', 0, 3, 1),
+(30, 15, 'Et excepturi qui nulla sunt ea laudantium alias. Tempora voluptas quod magni aspernatur ut ipsum quia. Et rerum soluta aut dolorum. Officia minus perferendis aut ea et odio dolores.', '1996-03-07', 1, 4, 2),
+(31, 32, 'eq', '2022-09-19', 1, 6, 9),
+(32, 34, 'Konsep Surat Oleh Pimpinan', '2022-09-19', 1, 7, 11),
+(33, 34, 'da', '2022-09-19', 1, 7, 11),
+(34, 34, 'd', '2022-09-19', 0, 7, 11);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mail_corrections`
+--
+
+CREATE TABLE `mail_corrections` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `outbox_mail_id` bigint(20) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `status_koreksi` tinyint(4) NOT NULL,
+  `isi_koreksi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `mail_corrections`
+--
+
+INSERT INTO `mail_corrections` (`id`, `outbox_mail_id`, `date`, `status_koreksi`, `isi_koreksi`) VALUES
+(1, 1, '2022-09-19', 1, 'd'),
+(2, 2, '2022-09-19', 0, 'Fontnya beda'),
+(3, 2, '2022-09-19', 1, 'Setuju gaskan');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(79, '2014_10_12_000000_create_users_table', 1),
+(80, '2014_10_12_100000_create_password_resets_table', 1),
+(81, '2019_08_19_000000_create_failed_jobs_table', 1),
+(82, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(83, '2022_08_17_075613_create_classrooms_table', 1),
+(84, '2022_08_18_052241_create_mail_concepts_table', 1),
+(85, '2022_08_18_052303_create_inbox_mails_table', 1),
+(86, '2022_08_18_052314_create_mail_corrections_table', 1),
+(87, '2022_08_18_053441_create_groups_table', 1),
+(88, '2022_08_18_053448_create_user_groups_table', 1),
+(89, '2022_08_24_185849_create_autographs_table', 1),
+(90, '2022_08_25_085405_create_classifications_table', 1),
+(91, '2022_08_25_092525_create_outbox_mails_table', 1),
+(92, '2022_09_07_042929_create_dispositions_table', 1),
+(93, '2022_09_16_131610_create_lessons', 1),
+(94, '2022_09_16_131850_create_assignments', 1),
+(95, '2022_09_17_072818_create_group_assignments', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `outbox_mails`
+--
+
+CREATE TABLE `outbox_mails` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `main_institution` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_institution` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_institution` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_institution` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address_institution` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `outboxmail_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attachment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_date` date NOT NULL,
+  `mail_about` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_recevier` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_destination` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city_destination` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `preambule` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_detail` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `closing_sentence` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_officer` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `officer` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `identity_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `notation` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_create` date NOT NULL,
+  `autograph_status` tinyint(4) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `save_location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `retention_status` smallint(6) DEFAULT NULL,
+  `active_year` int(11) DEFAULT NULL,
+  `inactive_year` int(11) DEFAULT NULL,
+  `group_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `mail_concept_id` bigint(20) UNSIGNED NOT NULL,
+  `classification_id` bigint(20) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `outbox_mails`
+--
+
+INSERT INTO `outbox_mails` (`id`, `main_institution`, `name_institution`, `phone_institution`, `email_institution`, `address_institution`, `file`, `logo`, `outboxmail_number`, `attachment`, `mail_date`, `mail_about`, `mail_recevier`, `mail_destination`, `city_destination`, `preambule`, `mail_detail`, `closing_sentence`, `mail_officer`, `officer`, `identity_number`, `notation`, `date_create`, `autograph_status`, `class_id`, `save_location`, `retention_status`, `active_year`, `inactive_year`, `group_id`, `user_id`, `mail_concept_id`, `classification_id`) VALUES
+(1, 'd', 'd', 'd', 'd@d.com', 'd', 'outbox_1663588858.png', 'logo_hAFIZH.png', 'd', 'd', '2022-09-16', 'd', 'd', 'd', 'd', 'd', '<p>d</p>', 'd', 'd', 'd', 'd', '<p>d</p>', '2022-09-19', 1, 6, 'a', 3, 2022, 200, 9, 32, 31, 3),
+(2, 'DINAS PENDIDIKAN', 'SMK SEBELAS MARET', '0341-2222331', 'email@dinas.com', 'Jl. kembang kertas', 'outbox_1663592470.png', 'logo_Pocrone.png', '187/M/A/2020', '-', '2022-09-14', 'Pemberitahuan', 'Yth Bapak Ibu Kepala Sekolah', 'SMK Seblas Maret', 'Kebumenn', 'Dengan Hormat', '<p>Lorem ipsum&nbsp;<span style=\"font-weight: initial;\">Lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">Lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">Lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">Lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">Lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">Lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">Lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">Lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">Lorem ipsum</span></p>', 'Hormat Kami', 'Indah Bareng', 'Kepala Sekolah', '160223421235', '<p>Kepala Pimpinan<br>Sekretaris<br>Dinas Terkait</p>', '2022-09-19', 1, 7, 'asd', 2, 2022, 2024, 11, 34, 32, NULL),
+(3, 'Dinas Pendidikan Kebudayan', 'SMK SEBELAS MALANGAN', '5331-3322', 'email@email.com', 'good', 'default.png', 'logo_Pocrone.png', '182/3/32/2002', '-', '2022-10-05', 'Pemberitahuan', 'Yth Bapak Ibu Kepsek', 'SMK 11 Malang', 'Kebeumen', 'Dengan Hormat', '<p>&nbsp;lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span></p><p>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span></p><p>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span>lorem ipsum&nbsp;<span style=\"font-weight: initial;\">lorem ipsum&nbsp;</span><span style=\"font-weight: initial;\"><br></span><span style=\"font-weight: initial;\"><br></span><span style=\"font-weight: initial;\">&nbsp;</span></p>', 'Hormat', 'Indah Setro', 'Kepsek', '56789234333', '<p>-</p>', '2022-09-19', 0, 7, NULL, NULL, NULL, NULL, 11, 34, 33, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` smallint(6) DEFAULT NULL,
+  `classroom_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `classroom_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Anastasia Ami Melani', 'Lega Tomi Kuswoyo S.Gz@test.com', '$2y$10$jpFV.SuMI31XYlAXE1eSBeFUqOXN/Labklo0oB8uVigTGhphaSt4G', 2, 4, NULL, NULL, NULL),
+(2, 'Ozy Baktianto Permadi S.H.', 'Tugiman Gaman Sihombing@test.com', '$2y$10$jmumurGEwQj6THp02/42Re9EOtjAUQG/a5trS183hg3/nZXqUhWvy', 2, 3, NULL, NULL, NULL),
+(3, 'Paulin Titi Permata S.Gz', 'Surya Purwanto Natsir M.Pd@test.com', '$2y$10$ndxsnLRlkqrpxov/1oG8WOhHY6EjuN1n8fpODpKp99U3nAZXLtLNa', 2, 4, NULL, NULL, NULL),
+(4, 'Elisa Uyainah', 'Ganda Radika Mustofa S.Pt@test.com', '$2y$10$tyAtIbY3lUW7rrTD634cBuiJS2c8q70mWZdRfQ31Kr7jhjBd1J.Vy', 2, 3, NULL, NULL, NULL),
+(5, 'Latika Purnawati', 'Bagya Prayogo Prasetyo S.Farm@test.com', '$2y$10$UofBCZGnP4BX15/WR/LdaOkyJ8foNcyTtYPYLZ4GDvehpFXX8Iqsq', 2, 3, NULL, NULL, NULL),
+(6, 'Jaya Nainggolan S.Gz', 'Patricia Yulianti@test.com', '$2y$10$wdY9q9AdKQQe6n0CcJnqOuKd.ly4Ij0mnkANQY3oJIn5KnID4qM5W', 2, 4, NULL, NULL, NULL),
+(7, 'Makara Maheswara S.Pd', 'Hardana Pranowo@test.com', '$2y$10$wr0kMqqbOB49.sAJxQ.JKu5Q48sg.I0Hvp9ZYMUst0hl612FmY1TG', 2, 2, NULL, NULL, NULL),
+(8, 'Nurul Fujiati', 'Yahya Sinaga@test.com', '$2y$10$vJZuOhOnaBFEccb023CUsugPMVb6C40gR1BxC5CzHcwjjRINPAG6O', 2, 4, NULL, NULL, NULL),
+(9, 'Nilam Anastasia Riyanti', 'Galang Rajata@test.com', '$2y$10$xH3KL3MON9IMajNgmxCQbe8HyPdod5FP4MdP.sFk.fvJV0LIdBlWm', 2, 4, NULL, NULL, NULL),
+(10, 'Zulaikha Wahyuni', 'Adikara Hutagalung@test.com', '$2y$10$mUDzhSAM4lw0A/kip12caepS8DmntPxIWFCOrPqFNEGwLq4ubJzpa', 2, 4, NULL, NULL, NULL),
+(11, 'Darmaji Tasnim Sitorus M.Farm', 'Lalita Tina Farida M.Kom.@test.com', '$2y$10$STJb5VjvXMGiD5F1CJ.OXOpf2.9jObVFJwTkbNmJ/oV6guxlP7Ih2', 2, 1, NULL, NULL, NULL),
+(12, 'Maryadi Kajen Kurniawan S.Kom', 'Daniswara Pratama@test.com', '$2y$10$lWKcaLMJy3x9loww1FKbs.mZH3ZRICBi/msjRJi6lxvuXmn5PoDTW', 2, 2, NULL, NULL, NULL),
+(13, 'Anita Juli Maryati S.Gz', 'Gatra Kasiran Hakim M.M.@test.com', '$2y$10$/cAOpH1HPBlHaP7VzbPu3ORZbBJ6Vs6Jjaojl/Wz303juPaJ6gMUm', 2, 1, NULL, NULL, NULL),
+(14, 'Fathonah Fitriani Farida S.T.', 'Wakiman Prasetya Zulkarnain S.H.@test.com', '$2y$10$bBpav3qyuGpr61Hs0eRYAOCsChPQnQLTEyN8lYrurOI0KgMOfGYkC', 2, 2, NULL, NULL, NULL),
+(15, 'Laswi Kunthara Samosir M.Kom.', 'Dacin Anggriawan M.Pd@test.com', '$2y$10$SLfm1z1HqodLME2nbSoJMebi5dk.OPZ400OOnJLWsclfAMnzYTgxy', 2, 2, NULL, NULL, NULL),
+(16, 'Banawa Labuh Pranowo', 'Mumpuni Tamba@test.com', '$2y$10$iOKeoa.Y2Jl5F05p7Uf0uuBaiDeh4pdNlf30qxTtz22YlaWw8OnLC', 2, 5, NULL, NULL, NULL),
+(17, 'Lidya Aisyah Yulianti', 'Hari Samosir@test.com', '$2y$10$H.KJI9sTRC1sfmNAJ6y9..GjdJ/3T7qcKwrjfX8UuojQHCuWkFYB2', 2, 2, NULL, NULL, NULL),
+(18, 'Maya Yani Sudiati S.Farm', 'Rahayu Nasyidah@test.com', '$2y$10$pt8tgpqPkLT8LIPQ7HxstO3Ug6/VfHs1Y0lfg4im/0KnytdqqcKPi', 2, 5, NULL, NULL, NULL),
+(19, 'Ciaobella Mayasari', 'Novi Haryanti@test.com', '$2y$10$CtTYhZu.BRls5KnZcxztNud/iVPlteSb.eWIq8G9p1RKlLusthsx.', 2, 5, NULL, NULL, NULL),
+(20, 'Bakiono Gunarto', 'Imam Januar@test.com', '$2y$10$2Qfa4b02N5TZkjJXuxnIz.NrWVGXb.VuLTibkRRB/R6X3Dy9jFGHC', 2, 1, NULL, NULL, NULL),
+(21, 'Syahrini Nadia Prastuti', 'Kemba Sinaga@test.com', '$2y$10$IR8fcAbuSrsu7lrp711tWe20JrLP1gtBk3qEiDFdfzczNxQSnbZbG', 2, 5, NULL, NULL, NULL),
+(22, 'Zulfa Restu Nasyiah M.Farm', 'Rahmat Rajasa S.Pt@test.com', '$2y$10$CKUDn5Ghlmtt7Aykxg97ke0wEODmtHmyU4CQ0vYl74iwfPw.FTa2i', 2, 5, NULL, NULL, NULL),
+(23, 'Satya Firgantoro', 'Endah Palastri@test.com', '$2y$10$bdSnMx.spk0uWWYFU7mfj.VhvXG5pNPDXKMHtEPyl7Ag1PuD.BzNa', 2, 3, NULL, NULL, NULL),
+(24, 'Erik Utama', 'Siska Palastri S.IP@test.com', '$2y$10$FNBb.QXBo5NDm0aafR4khOuHCdbdEikYzAOZgnpHNXmdLSGpQVke6', 2, 2, NULL, NULL, NULL),
+(25, 'Sidiq Harja Hidayat', 'Jono Marbun@test.com', '$2y$10$PuaNHuvbRJgomEsPOUhLqudyqdSaIWwaoc4itKqOIRic1PzDd0eXO', 2, 2, NULL, NULL, NULL),
+(26, 'Gamanto Hidayanto', 'Kamaria Cornelia Riyanti M.M.@test.com', '$2y$10$xK01U3j/Jwgd3eknjXrphuQDsj/zDSnsye6nC.QGYlmieDiHih/by', 2, 1, NULL, NULL, NULL),
+(27, 'Zahra Zulaika', 'Wadi Wijaya S.I.Kom@test.com', '$2y$10$N0V59/7bs1BU0g5owXANe.xl9Gu.tEqenDLpGIaQOGgfUYVosts3C', 2, 5, NULL, NULL, NULL),
+(28, 'Maida Pudjiastuti', 'Salman Okta Manullang@test.com', '$2y$10$eDbSoG8eZlsD/YVL.xfA4.3JeC8BfEikJIF57xMMt2Id80PkxUO22', 2, 3, NULL, NULL, NULL),
+(29, 'Agnes Gilda Mardhiyah S.Gz', 'Calista Widiastuti@test.com', '$2y$10$s/YMeOo4lw3Sz1qcDf0cvO6vvfUHY2ksWWPAYOJucYUJD47g8VMWq', 2, 4, NULL, NULL, NULL),
+(30, 'Warji Oman Sitorus', 'Yance Elvina Prastuti S.Kom@test.com', '$2y$10$Og6eiwHQggiNzbN3s8pQg.RStH9NT3BGFHzZMijkvm35PAXBsAbkC', 2, 1, NULL, NULL, NULL),
+(31, 'Lulu Iwana', 'guru@email.com', '$2y$10$US5JmszOK4brn6Pu3ZQoJOHSNNIJxxwehfil0scRC.cW3AtuCb.Cq', 1, NULL, NULL, NULL, NULL),
+(32, 'hAFIZH', 'a@a.com', '$2y$10$e5.uEihCCoHlkT0PUOtgqOgZY3RczhuJuiqhbPq5SqHUROnxV/RT6', 2, 6, NULL, NULL, NULL),
+(33, 'Hafizh', 'b@b.com', '$2y$10$2QFhQJOFLA52663o.W4B5eHQtiEoWQ38XfCzhK3Q8eYSsj5brJ7IW', 1, NULL, NULL, NULL, NULL),
+(34, 'Pocrone', 'd@d.com', '$2y$10$kAYXxC5ZlBLeDyo0ZN.xCOAQy5xb7CETWkydWbp8mqXC54VnisKBW', 2, 7, NULL, NULL, NULL),
+(35, 'Hafizh Belum Daftar', 'm@m.com', '$2y$10$irYv5VMc05622Rb17.E1iOLCamSkROFaaYlYcHQofOmRJXyt2w5lS', 2, 7, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user_groups`
+--
+
+CREATE TABLE `user_groups` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `group_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `user_groups`
+--
+
+INSERT INTO `user_groups` (`id`, `user_id`, `group_id`) VALUES
+(1, 12, 5),
+(2, 24, 1),
+(3, 20, 4),
+(4, 25, 4),
+(5, 4, 4),
+(6, 27, 2),
+(7, 23, 2),
+(8, 2, 1),
+(9, 17, 4),
+(10, 11, 1),
+(16, 32, 10),
+(17, 34, 11),
+(18, 35, 1);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `assignments`
+--
+ALTER TABLE `assignments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `autographs`
+--
+ALTER TABLE `autographs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `autographs_user_id_foreign` (`user_id`);
+
+--
+-- Indeks untuk tabel `classifications`
+--
+ALTER TABLE `classifications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `classrooms`
+--
+ALTER TABLE `classrooms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `dispositions`
+--
+ALTER TABLE `dispositions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indeks untuk tabel `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `groups_leadergroupid_foreign` (`LeaderGroupID`);
+
+--
+-- Indeks untuk tabel `group_assignments`
+--
+ALTER TABLE `group_assignments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `inbox_mails`
+--
+ALTER TABLE `inbox_mails`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `lessons`
+--
+ALTER TABLE `lessons`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `mail_concepts`
+--
+ALTER TABLE `mail_concepts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `mail_corrections`
+--
+ALTER TABLE `mail_corrections`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `outbox_mails`
+--
+ALTER TABLE `outbox_mails`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indeks untuk tabel `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indeks untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indeks untuk tabel `user_groups`
+--
+ALTER TABLE `user_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `assignments`
+--
+ALTER TABLE `assignments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `autographs`
+--
+ALTER TABLE `autographs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `classifications`
+--
+ALTER TABLE `classifications`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT untuk tabel `classrooms`
+--
+ALTER TABLE `classrooms`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `dispositions`
+--
+ALTER TABLE `dispositions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT untuk tabel `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT untuk tabel `group_assignments`
+--
+ALTER TABLE `group_assignments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `inbox_mails`
+--
+ALTER TABLE `inbox_mails`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT untuk tabel `lessons`
+--
+ALTER TABLE `lessons`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `mail_concepts`
+--
+ALTER TABLE `mail_concepts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT untuk tabel `mail_corrections`
+--
+ALTER TABLE `mail_corrections`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+
+--
+-- AUTO_INCREMENT untuk tabel `outbox_mails`
+--
+ALTER TABLE `outbox_mails`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT untuk tabel `user_groups`
+--
+ALTER TABLE `user_groups`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `autographs`
+--
+ALTER TABLE `autographs`
+  ADD CONSTRAINT `autographs_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `groups`
+--
+ALTER TABLE `groups`
+  ADD CONSTRAINT `groups_leadergroupid_foreign` FOREIGN KEY (`LeaderGroupID`) REFERENCES `users` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

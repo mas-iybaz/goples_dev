@@ -1,0 +1,608 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Waktu pembuatan: 26 Agu 2022 pada 14.56
+-- Versi server: 10.4.22-MariaDB
+-- Versi PHP: 8.1.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `db_erise`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `autographs`
+--
+
+CREATE TABLE `autographs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `autograph` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `autographs`
+--
+
+INSERT INTO `autographs` (`id`, `user_id`, `autograph`) VALUES
+(4, 31, 'TTD_Hafizh.png');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `classifications`
+--
+
+CREATE TABLE `classifications` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `class` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sub_class` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `classifications`
+--
+
+INSERT INTO `classifications` (`id`, `class`, `sub_class`) VALUES
+(1, 'RE', 'GE'),
+(2, 'PS', 'BS'),
+(3, 'TV', 'BT'),
+(4, 'DK', 'BM'),
+(5, 'BY', 'BW'),
+(6, 'ZM', 'GR'),
+(7, 'GA', 'PH'),
+(8, 'WS', 'SC'),
+(9, 'LB', 'BN'),
+(10, 'DK', 'VG'),
+(11, 'AI', 'NL'),
+(12, 'BZ', 'GQ'),
+(13, 'VE', 'IQ'),
+(14, 'CG', 'CY'),
+(15, 'KH', 'AG'),
+(16, 'FO', 'BI'),
+(17, 'EG', 'AM'),
+(18, 'KY', 'IN'),
+(19, 'JE', 'MG'),
+(20, 'TH', 'ZA'),
+(21, 'IE', 'MP'),
+(22, 'TR', 'NL'),
+(23, 'DE', 'TH'),
+(24, 'AW', 'HK'),
+(25, 'MQ', 'BH'),
+(26, 'MY', 'CO'),
+(27, 'ML', 'ER'),
+(28, 'MU', 'VE'),
+(29, 'RE', 'VN'),
+(30, 'NO', 'AU');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `classrooms`
+--
+
+CREATE TABLE `classrooms` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `class_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `class_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `classrooms`
+--
+
+INSERT INTO `classrooms` (`id`, `class_name`, `user_id`, `class_code`) VALUES
+(1, 'molestias', 2, 'QRXEK'),
+(2, 'excepturi', 4, 'QYBQM'),
+(3, 'exercitationem', 2, '2Z6RQ'),
+(4, 'soluta', 3, 'ADLWF'),
+(5, 'sed', 4, 'P0EQQ');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `groups`
+--
+
+CREATE TABLE `groups` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `groupname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `LeaderGroupID` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `groups`
+--
+
+INSERT INTO `groups` (`id`, `groupname`, `LeaderGroupID`) VALUES
+(1, 'assumenda', 22),
+(2, 'iure', 6),
+(3, 'distinctio', 17),
+(4, 'hic', 9),
+(5, 'sit', 27);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `inbox_mails`
+--
+
+CREATE TABLE `inbox_mails` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `mail_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
+  `sender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_attribute` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_about` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_summary` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` smallint(6) NOT NULL,
+  `mail_location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `classification_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `retention_status` smallint(6) DEFAULT NULL,
+  `active_year` int(11) DEFAULT NULL,
+  `inactive_year` int(11) DEFAULT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `group_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `inbox_mails`
+--
+
+INSERT INTO `inbox_mails` (`id`, `mail_number`, `date`, `time`, `sender`, `mail_attribute`, `mail_about`, `mail_summary`, `status`, `mail_location`, `classification_id`, `file`, `retention_status`, `active_year`, `inactive_year`, `classroom_id`, `group_id`) VALUES
+(1, '4916-1231-7441-7183', '2005-12-15', '15:02:32', 'CV Ramadan Rahmawati', 'Penting', 'itaque', 'Tempore nisi consequatur quibusdam. Est in magnam nihil enim. Mollitia quos eligendi recusandae consequatur expedita. Incidunt aut quia optio esse eum.', 3, 'TH', 25, 'default.png', 3, 2022, 2033, 5, 4),
+(2, '4716-2317-5274-2468', '2002-06-26', '11:45:17', 'UD Simanjuntak Prasetyo', 'Penting', 'sed', 'Cumque exercitationem consequatur facere accusantium. Possimus ipsam sequi voluptatum nobis provident vitae. Sit sit assumenda dolores totam. Ut excepturi ducimus qui sed et nemo.', 1, 'PA', 19, 'default.png', 3, 2022, 2033, 1, 5),
+(3, '4929-7050-0168-6090', '1980-10-12', '17:55:55', 'PD Sihotang Lazuardi Tbk', 'Rahasia', 'debitis', 'Quia et animi ut a repellat minus. Consequatur magnam quasi voluptas incidunt hic facilis. Voluptatem eum sunt temporibus quidem illum voluptatum qui enim.', 1, 'PY', 22, 'default.png', 0, 2022, 2033, 1, 3),
+(4, '4532-7105-1667-6486', '1991-03-06', '04:36:39', 'Perum Tamba', 'Biasa', 'optio', 'Esse temporibus officiis voluptas a. Nisi qui voluptatem nisi eveniet. Nemo aspernatur suscipit placeat porro provident libero excepturi.', 2, 'CW', 15, 'default.png', 1, 2022, 2033, 4, 2),
+(5, '4332-6003-3765-6662', '2002-04-06', '01:11:08', 'PT Mardhiyah (Persero) Tbk', 'Biasa', 'sunt', 'Cumque ea dolore sit quas. Et nesciunt nobis quaerat rerum minima. Odit delectus sed qui ducimus.', 3, 'MW', 4, 'default.png', 1, 2022, 2033, 4, 4),
+(6, '4916-4383-5827-2018', '1991-11-22', '08:02:37', 'PD Saputra Agustina', 'Biasa', 'et', 'Eos dolore ad voluptatem. Molestiae illo non omnis autem iste voluptas nemo. Animi quas aperiam nobis laborum eum.', 3, 'MK', 17, 'default.png', 2, 2022, 2033, 2, 3),
+(7, '4041-3920-3789-1573', '2015-11-18', '05:42:14', 'CV Wahyuni Hutasoit', 'Rahasia', 'sed', 'Perferendis placeat iusto minus velit porro velit molestias totam. Esse repellat vel molestiae ut nisi eos. Nemo omnis sit reprehenderit commodi iure harum tenetur animi.', 2, 'US', 27, 'default.png', 0, 2022, 2033, 5, 2),
+(8, '4716-9563-7482-9380', '1976-02-13', '04:24:46', 'UD Lestari', 'Penting', 'vel', 'Eos rerum velit dolores odio. Quos vel blanditiis cum qui. Totam enim explicabo quis repellendus tempore. Et ut enim eligendi enim labore.', 0, 'SK', 16, 'default.png', 3, 2022, 2033, 3, 2),
+(9, '4721-6964-3831-0745', '2001-09-10', '15:52:49', 'PD Prastuti Budiman Tbk', 'Penting', 'autem', 'Itaque et aut assumenda rem mollitia nisi blanditiis. Debitis molestiae illo ullam voluptatem vero a. Autem qui laudantium consequuntur numquam aliquam odio. Ipsum autem earum alias totam.', 0, 'NG', 29, 'default.png', 0, 2022, 2033, 4, 3),
+(10, '4916-6452-5943-5433', '1990-02-11', '11:29:28', 'UD Pratiwi Lailasari (Persero) Tbk', 'Biasa', 'deleniti', 'Blanditiis corporis pariatur ut libero facere modi. Velit et id dolorem eaque esse. Natus et dicta et.', 0, 'CV', 20, 'default.png', 1, 2022, 2033, 4, 2),
+(11, '4539-4801-3364-4860', '1978-10-28', '04:29:12', 'PT Rahimah Uyainah Tbk', 'Penting', 'dignissimos', 'Non enim explicabo ullam dolor. Et officia odio qui delectus voluptatem. Sed voluptas ipsam explicabo repellendus eos odio provident et.', 2, 'MY', 8, 'default.png', 1, 2022, 2033, 2, 3),
+(12, '4485-9031-2378-2022', '2007-11-21', '02:59:56', 'CV Purnawati', 'Biasa', 'non', 'Suscipit consectetur vero suscipit architecto fuga exercitationem. Occaecati molestiae sunt corrupti aperiam nisi repudiandae corporis. Sit porro quos laborum et facere nesciunt non. Ipsam tenetur non ipsam qui.', 1, 'CF', 2, 'default.png', 0, 2022, 2033, 5, 1),
+(13, '4485-1559-2698-1687', '1988-02-23', '23:23:09', 'Perum Sihotang Saragih (Persero) Tbk', 'Penting', 'ut', 'Sit eos ad debitis dolorum quaerat aspernatur atque. Inventore iusto deleniti aut provident. Sit sint voluptatum est est maiores sunt.', 2, 'CR', 12, 'default.png', 3, 2022, 2033, 5, 1),
+(14, '4916-3058-7767-1741', '2016-08-19', '06:05:06', 'CV Prasetyo (Persero) Tbk', 'Rahasia', 'qui', 'Veritatis consequuntur est sed aut omnis voluptas. Ex voluptate repellendus vitae quos et culpa. Error unde deserunt sunt iure amet. Est adipisci est vel qui.', 2, 'MC', 12, 'default.png', 1, 2022, 2033, 3, 5),
+(15, '4929-2102-4844-0682', '1987-10-13', '03:45:10', 'PD Pradana (Persero) Tbk', 'Penting', 'harum', 'Eveniet quidem earum deserunt nostrum itaque placeat. Voluptatibus et consectetur vitae corporis sunt id. Mollitia blanditiis est rerum neque. Ea aliquid placeat et nam.', 0, 'CN', 25, 'default.png', 0, 2022, 2033, 2, 1),
+(16, '4425-1053-8788-6449', '2013-10-27', '17:28:51', 'PD Agustina Riyanti', 'Rahasia', 'sunt', 'Itaque fugiat nemo facere aperiam molestias molestiae est. Distinctio ut sint quae delectus iste nam. Recusandae consequatur aliquam vero dolore voluptatem.', 2, 'BQ', 14, 'default.png', 1, 2022, 2033, 2, 2),
+(17, '4485-2288-2246-2134', '1989-11-16', '18:42:29', 'Perum Wahyuni (Persero) Tbk', 'Penting', 'laborum', 'Natus provident ducimus tenetur voluptatibus sint. Illo consequuntur accusamus itaque pariatur ad. Et et ut saepe laudantium. Voluptatem repudiandae animi numquam odit quod eveniet suscipit.', 3, 'GE', 30, 'default.png', 1, 2022, 2033, 4, 5),
+(18, '4916-4549-0785-3273', '2006-11-01', '04:10:44', 'PD Mardhiyah', 'Penting', 'deserunt', 'Doloribus quia cum dolorum eos. Inventore doloremque autem omnis facilis iusto quam. Tempore quo ratione culpa eos quo aliquid eveniet. Ut et ducimus omnis sed architecto. Velit consectetur ea accusantium autem veritatis dignissimos minus.', 2, 'MO', 18, 'default.png', 2, 2022, 2033, 2, 4),
+(19, '4556-3326-1048-9319', '1999-08-13', '13:54:35', 'PD Tampubolon Suryono (Persero) Tbk', 'Rahasia', 'quasi', 'Laborum placeat aut consequuntur velit omnis natus qui. Quo deleniti quae libero eos exercitationem. Sunt illo corrupti totam rerum quo.', 0, 'GW', 21, 'default.png', 0, 2022, 2033, 4, 2),
+(20, '4532-1758-6501-3691', '2001-04-12', '15:31:33', 'CV Winarsih (Persero) Tbk', 'Biasa', 'vero', 'Pariatur voluptas exercitationem ut asperiores. Inventore cumque modi voluptatem ad harum quidem voluptatem. Quia animi ut beatae dolor nostrum non sit molestias. Voluptatem debitis consequuntur nihil aut porro quo.', 2, 'BN', 12, 'default.png', 1, 2022, 2033, 3, 2),
+(21, '4532-8546-1652-8005', '1982-06-27', '09:06:54', 'PD Uwais', 'Penting', 'doloremque', 'Occaecati ipsum ut fugit qui. Minus est ipsam qui dignissimos quod tempora. Et placeat nisi architecto sint voluptatem id.', 2, 'SZ', 16, 'default.png', 0, 2022, 2033, 1, 1),
+(22, '4024-0071-6641-3962', '1976-04-24', '02:21:08', 'PD Padmasari Oktaviani', 'Biasa', 'non', 'Voluptas non doloribus est repellat. Et voluptates ut quo deleniti consectetur excepturi. Dolorum saepe eius et ut sed. Fuga et hic placeat natus.', 3, 'NA', 9, 'default.png', 0, 2022, 2033, 5, 3),
+(23, '4485-9031-1633-3874', '2006-01-11', '17:19:53', 'PT Wahyuni Saptono', 'Penting', 'omnis', 'Perferendis sint excepturi ullam harum et omnis. Corrupti amet qui enim dolore. At et id ducimus non unde tempore labore.', 0, 'EH', 4, 'default.png', 2, 2022, 2033, 2, 1),
+(24, '4909-9448-9629-3548', '1974-06-02', '03:34:09', 'UD Mansur Natsir', 'Rahasia', 'deserunt', 'Sint dolorem quasi iste omnis. Sit praesentium nihil iste quia. Minus enim exercitationem modi fuga tempore.', 0, 'RE', 3, 'default.png', 0, 2022, 2033, 3, 2),
+(25, '4616-2139-3330-9129', '2009-07-15', '15:36:52', 'Perum Samosir Tampubolon (Persero) Tbk', 'Penting', 'sed', 'Et est non rem impedit dolor ut. Omnis aperiam provident facilis aut adipisci. Et maxime ut excepturi qui deserunt quos. Necessitatibus enim vitae facere iste.', 3, 'JE', 16, 'default.png', 1, 2022, 2033, 1, 4),
+(26, '4916-2133-4215-9799', '1995-02-05', '00:23:15', 'PD Andriani (Persero) Tbk', 'Rahasia', 'aliquam', 'Placeat necessitatibus voluptas quo ad enim atque quos itaque. Aut quidem fugiat qui autem. Maiores dolorem quod iure. Officia fugit vel ullam fugiat consequatur officiis. Id inventore explicabo aut alias odio saepe officiis.', 1, 'KM', 1, 'default.png', 2, 2022, 2033, 5, 5),
+(27, '4929-9530-4218-8755', '1989-08-30', '15:02:20', 'Perum Yuniar Mulyani', 'Rahasia', 'est', 'Accusamus nam aut corporis. Nulla autem est cumque aut. Illum id debitis aut voluptate veniam mollitia et.', 0, 'LB', 22, 'default.png', 1, 2022, 2033, 4, 3),
+(28, '4929-6650-5968-9174', '1990-01-22', '15:09:03', 'PD Usada Padmasari', 'Rahasia', 'esse', 'Omnis aspernatur ipsa quia sint. Quis similique vitae natus est. Nihil quia eligendi rerum consectetur necessitatibus.', 3, 'BG', 11, 'default.png', 3, 2022, 2033, 5, 4),
+(29, '4716-1323-8852-9156', '2001-07-26', '16:12:28', 'PD Uyainah Nasyiah', 'Rahasia', 'est', 'Et quidem minus rerum recusandae in. Facere veniam voluptatibus ducimus. Ipsum eveniet beatae quia.', 3, 'KM', 15, 'default.png', 2, 2022, 2033, 2, 4),
+(30, '4716-2405-8858-5595', '2006-08-23', '02:37:09', 'UD Dabukke Siregar', 'Rahasia', 'incidunt', 'Consequatur voluptatibus officiis adipisci tenetur est. Alias itaque explicabo ut ut. Atque aliquam qui praesentium tenetur quam delectus. Reprehenderit iure rerum voluptas quaerat occaecati nihil animi voluptatibus.', 3, 'TM', 24, 'default.png', 1, 2022, 2033, 4, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mail_concepts`
+--
+
+CREATE TABLE `mail_concepts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `mail_concept` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `group_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `mail_concepts`
+--
+
+INSERT INTO `mail_concepts` (`id`, `user_id`, `mail_concept`, `date`, `status`, `classroom_id`, `group_id`) VALUES
+(1, 24, 'Voluptatum possimus dolores voluptas voluptates quaerat veritatis. Natus qui sit magni nisi voluptas et. Recusandae iusto est velit sunt et. Voluptas omnis possimus fugit consequatur veniam quaerat.', '1977-02-05', 1, 1, 5),
+(2, 25, 'Assumenda et quia tempora delectus ex et. Similique eos qui totam sit perferendis natus impedit officia. Omnis ut esse ad non qui deserunt. Autem at dicta eum voluptatum.', '1970-04-18', 1, 2, 3),
+(3, 27, 'Saepe aliquam ut ut et. Velit ut laudantium veniam sed aperiam est autem at. Magni itaque et tenetur reiciendis aut numquam ex. Repudiandae blanditiis exercitationem omnis est fuga atque.', '1995-02-04', 0, 1, 5),
+(4, 30, 'Et inventore est et ea et. Culpa et explicabo vel. Consequuntur dolores tenetur tempore modi. Libero placeat et consequuntur labore inventore voluptatem.', '1975-07-31', 0, 2, 5),
+(5, 25, 'Architecto rerum excepturi qui eius ratione. Qui facere nostrum sit cum quisquam iusto officiis sunt.', '2021-01-09', 1, 1, 1),
+(6, 1, 'Ipsam ratione eum aut sint. Quaerat blanditiis cumque voluptas aspernatur. Sequi ut explicabo accusantium.', '1988-07-20', 1, 5, 3),
+(7, 29, 'Tenetur facilis ut aut ipsa id ea. Corporis magnam autem eveniet dolorem.', '1988-12-11', 1, 4, 2),
+(8, 17, 'Ut dolorem qui praesentium earum. Eum animi aspernatur incidunt quia veritatis nam nihil recusandae. Nisi minus soluta odio enim porro officiis cumque.', '1998-07-14', 1, 1, 4),
+(9, 19, 'Et dolores et aut pariatur. Corrupti illum occaecati fugit cumque nisi.', '1978-09-11', 1, 1, 1),
+(10, 13, 'Et iste quia culpa minus quia. Ut sunt sequi maiores et. Velit ipsam quia cumque voluptas dolores. Hic necessitatibus ducimus aut eos. Illum totam omnis voluptates voluptatem.', '2008-11-04', 0, 3, 4),
+(11, 25, 'Ut doloribus exercitationem sed voluptas et facilis dolore. Rerum sint nam dolor. Qui libero vitae molestiae veritatis. Dolorem provident facere natus at architecto ad.', '2012-09-21', 0, 2, 2),
+(12, 18, 'Ipsum nulla eligendi et reprehenderit asperiores provident voluptatem aspernatur. Voluptatem dolorum dolorem necessitatibus quidem enim et doloribus quia. Rerum veniam libero nulla veritatis.', '2014-08-15', 0, 4, 1),
+(13, 7, 'Est esse quia earum autem sit tenetur est. Qui mollitia repellendus suscipit iure repudiandae dicta. Optio voluptatum incidunt tempore accusamus sint. Sint voluptatum est rem cum et voluptas at non.', '1980-02-23', 1, 2, 5),
+(14, 4, 'Nam excepturi illum dolores non modi a voluptatem. Omnis ipsum deleniti ducimus odio ducimus. Eum et doloremque voluptas. Sint et dolorem ut excepturi consequuntur.', '1993-10-31', 0, 4, 5),
+(15, 27, 'Aliquam ut optio quis similique repudiandae eum id. Beatae odio autem repudiandae labore odio. Iste totam neque nemo modi.', '2000-11-30', 1, 1, 3),
+(16, 18, 'Deleniti sit praesentium et voluptatem tempore aperiam voluptas. Nemo sint alias nostrum voluptatem. Error et quasi minima quia dolorum in.', '2020-05-10', 0, 5, 5),
+(17, 6, 'Nulla quidem et dolore dolorem sit beatae. Necessitatibus sapiente occaecati sit nam tempore illo. Ducimus officia alias ut et dolorem.', '2003-09-02', 1, 4, 1),
+(18, 5, 'Sapiente quia ut omnis non. Expedita perspiciatis animi qui quo rerum quaerat. Aut harum at voluptas beatae consequatur laudantium. In sunt repellendus aut sed laudantium ut.', '2018-01-24', 1, 4, 1),
+(19, 13, 'Omnis assumenda optio omnis eum ut laudantium. Corporis voluptates debitis et quo quisquam qui eum. Quos sequi nemo voluptatem voluptas.', '2019-09-13', 0, 3, 5),
+(20, 10, 'Rerum qui minima quia magnam dolorem aut. Nesciunt ut voluptatem quia laboriosam eligendi. Facilis et rem vel ducimus cupiditate expedita. Debitis ut dolore animi dolor quis.', '1999-01-14', 1, 3, 5),
+(21, 23, 'Laboriosam qui et sunt vel alias error eaque. Expedita magni maxime eius ea ipsum. Voluptas sunt sint pariatur ducimus voluptas tempore.', '2001-11-28', 0, 3, 3),
+(22, 16, 'Molestiae doloremque voluptatibus exercitationem placeat. Et minus adipisci eligendi voluptatum. Sapiente assumenda itaque repudiandae ut unde. Tenetur nesciunt autem tempora.', '1970-07-16', 0, 1, 2),
+(23, 21, 'Beatae aliquid voluptates qui autem quod inventore. Eligendi sunt eos voluptates est. Voluptates esse repellat animi omnis. Quisquam consequuntur at ipsum enim beatae.', '1975-01-30', 0, 3, 5),
+(24, 24, 'Magni eos aliquid et molestiae. Maiores dolorem adipisci quos neque voluptatem. Molestiae adipisci cum dignissimos veritatis eum quia. Consequatur est rerum ipsa aut officiis nesciunt.', '2019-02-03', 1, 2, 3),
+(25, 2, 'Atque est optio blanditiis qui harum voluptas. Odio numquam similique sequi eius dignissimos dolore iure. Ut vel vel error officia.', '2021-06-18', 0, 1, 1),
+(26, 1, 'Quisquam qui non asperiores optio at optio. Perferendis est at non dolores perspiciatis pariatur. Officiis ut quo iste ratione ab magni dolores.', '1997-06-23', 0, 4, 4),
+(27, 21, 'Magni quas labore accusantium occaecati quo fuga labore. Velit consequatur delectus quaerat culpa reiciendis consequatur. Libero dolor vero non labore a.', '2005-01-11', 0, 3, 5),
+(28, 13, 'Facilis soluta fugit magni a expedita explicabo et. Inventore ut ut saepe eius ab modi. Consectetur quia facilis repellat.', '1986-06-16', 1, 2, 4),
+(29, 8, 'Unde accusamus sapiente aliquam error ab quia aliquid. Soluta sed voluptates est numquam sit debitis. Enim sint ut omnis voluptas.', '1975-11-08', 1, 5, 2),
+(30, 11, 'Repellat maxime et quis voluptate molestiae et dolores. Quis asperiores fugiat consequatur et repellat earum. Beatae sequi aut quos ex eveniet.', '2008-03-28', 1, 2, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mail_corrections`
+--
+
+CREATE TABLE `mail_corrections` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2022_08_17_075613_create_classrooms_table', 1),
+(6, '2022_08_18_052241_create_mail_concepts_table', 1),
+(7, '2022_08_18_052303_create_inbox_mails_table', 1),
+(8, '2022_08_18_052314_create_mail_corrections_table', 1),
+(9, '2022_08_18_053441_create_groups_table', 1),
+(10, '2022_08_18_053448_create_user_groups_table', 1),
+(11, '2022_08_24_185849_create_autographs_table', 1),
+(12, '2022_08_25_085405_create_classifications_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` smallint(6) DEFAULT NULL,
+  `classroom_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `classroom_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Rizki Saadat Siregar', 'Asmianto Mansur@test.com', '$2y$10$oXpT5NorIkGaFfnNIBLekOPuRXTm6Yhh.PDzPM3GPHaEd2bc6y2ti', 2, 2, NULL, NULL, NULL),
+(2, 'Lamar Adriansyah', 'Prayogo Panji Sinaga@test.com', '$2y$10$riK34MvRRkD.SdNNCjWvZuP/H1jx7pXCWAapD1lvFwhgpf5CDwM8C', 2, 3, NULL, NULL, NULL),
+(3, 'Titi Ilsa Hariyah', 'Jaeman Mustofa@test.com', '$2y$10$9S.s.Tx.9VoDaC/y18ZSO.lKMRC9jLU7JDkPk9HAKJRdujM.axV4i', 2, 2, NULL, NULL, NULL),
+(4, 'Halim Adinata Prasetyo', 'Banara Situmorang@test.com', '$2y$10$N0mi3Uk.hCeqxIVWP6MiAOI8t7f7vOhK09ZKDP3.gCXR2loZOx0li', 2, 2, NULL, NULL, NULL),
+(5, 'Anastasia Purwanti', 'Irwan Paiman Wibisono@test.com', '$2y$10$ENFNW64iGnwMlYbvRi3YGeZ/ZGG9.UDi3nA7Tp0nzKn11K2a8K5Ke', 2, 1, NULL, NULL, NULL),
+(6, 'Tami Cici Lestari', 'Hardi Viktor Hutapea M.Farm@test.com', '$2y$10$HKzw89dbnDGJNCmx/uPa5O8IAUk2wvNWmm9yzUpNtYH247e8NmyAa', 2, 1, NULL, NULL, NULL),
+(7, 'Jane Mutia Laksita S.E.', 'Hafshah Riyanti S.H.@test.com', '$2y$10$1evtMajaJlY4DKgwl9xKVus2E.b9VNWuMNaP5kzsKpPtFw6N4NYzW', 2, 3, NULL, NULL, NULL),
+(8, 'Shania Maryati', 'Najwa Pudjiastuti@test.com', '$2y$10$o66ATUyqCskFoHeNS9TOk.joFfHp6dB9OPYvt7LGRT3Xq8SeD0w1O', 2, 5, NULL, NULL, NULL),
+(9, 'Cornelia Hassanah', 'Caraka Lukita Prakasa M.TI.@test.com', '$2y$10$VGSWVIKwHvZvnJ9Uoe0KSu.HYsDW/3cbfdd1XfDr9j7LHhe25WegC', 2, 5, NULL, NULL, NULL),
+(10, 'Teddy Tirta Najmudin M.Kom.', 'Lasmono Erik Sitorus M.Kom.@test.com', '$2y$10$qNXwbl020HOVZ5brVCbveeKTodQ6lAa2QmjHaMEWL.P5dQ..qOh0y', 2, 4, NULL, NULL, NULL),
+(11, 'Gangsa Prakasa', 'Lukita Mustofa Siregar S.Sos@test.com', '$2y$10$OVtJSx4C2hxpgy4TJoFV9OBVas.3JVsWVFT48PSOL31QM/bqPBX5e', 2, 2, NULL, NULL, NULL),
+(12, 'Embuh Hutagalung', 'Ade Lazuardi@test.com', '$2y$10$P5eqjJ.53.vDQL0rs4AGsupARONnQVl0/j0zqdMyWAmkqDVaMoSaO', 2, 2, NULL, NULL, NULL),
+(13, 'Okta Suryono', 'Lili Haryanti@test.com', '$2y$10$1lEENSI/7CfQF2XZSyFUD.Tm6FMjIIfJlq/6k9j98b.DdDq/UZagi', 2, 5, NULL, NULL, NULL),
+(14, 'Ayu Rahmawati', 'Belinda Pratiwi@test.com', '$2y$10$opAS1yJ2ATFiDS5R2XGSqOeDByVjkAdm4GGpLSpbpr4XFfjnbjpqG', 2, 5, NULL, NULL, NULL),
+(15, 'Kambali Nashiruddin', 'Banawa Mahendra@test.com', '$2y$10$TbT5x8uDRA0d4HVkcL1YXuUi4gT4rCcI8vmirUYlqCiIxCt1Wv8pi', 2, 1, NULL, NULL, NULL),
+(16, 'Drajat Tarihoran', 'Hardi Latupono@test.com', '$2y$10$QBigPfvfrPK3yawUXRY4k.ekSNg5A1Gtjo9MoIlUYDo3tgEmqvcrO', 2, 1, NULL, NULL, NULL),
+(17, 'Rahmi Lestari', 'Rika Lestari@test.com', '$2y$10$/SYAh/1OBMHcOO2YTjRTFuuHBvNJi2s8TIL1sem0lOs12XF3hg1Eq', 2, 2, NULL, NULL, NULL),
+(18, 'Zaenab Putri Handayani M.M.', 'Qori Kusmawati@test.com', '$2y$10$SWOgn6639B4zDU2okfUf2.vU6Vq0LJWDXc3cx//TwstwFULFUBYxm', 2, 1, NULL, NULL, NULL),
+(19, 'Almira Anita Utami', 'Kala Haryanto@test.com', '$2y$10$NDWqBecP.NZll5IFmWYsJO5ZmdfzAhcWBZVzNsZ6aB8DeWWdf40kO', 2, 3, NULL, NULL, NULL),
+(20, 'Titi Laksmiwati S.Pd', 'Nurul Rahayu Nuraini S.E.I@test.com', '$2y$10$l47no3tlR3di5CBUIwGqg.jEQ4ayr64Qi8RJvKLSuiv.jAQmTNpmC', 2, 4, NULL, NULL, NULL),
+(21, 'Makara Thamrin', 'Dagel Uwais M.Pd@test.com', '$2y$10$V3QRSFF4kyt7t6/PZh4Ssea1TU832fDX4BSOP39iD0.UGOrgB2Coi', 2, 4, NULL, NULL, NULL),
+(22, 'Among Saka Waluyo', 'Ida Amelia Rahayu@test.com', '$2y$10$LS1ZcWV2J8Bgx7KltWaUheBLRWfQzpipBCW/ksdolJx3/htv1mKv.', 2, 3, NULL, NULL, NULL),
+(23, 'Paiman Saptono', 'Titin Hariyah@test.com', '$2y$10$lUNM3yFvWtIcWE36WlIDdeWNydUR2npTztz8gz2.ReriQHjZ.Hfna', 2, 3, NULL, NULL, NULL),
+(24, 'Hendri Megantara S.IP', 'Mutia Elvina Winarsih@test.com', '$2y$10$343yEOO.KmwbESNNSV2v/O9jOHbdULMuka4hunWoXH/oUMHkFkXg.', 2, 3, NULL, NULL, NULL),
+(25, 'Kala Kurniawan', 'Bakijan Lantar Maheswara S.Ked@test.com', '$2y$10$iFUMACcVBU.MkZzk6uCXjOX0BBVbPjPEAbJ4YNhIzWddWV54zHvb.', 2, 4, NULL, NULL, NULL),
+(26, 'Faizah Keisha Handayani M.M.', 'Icha Suryatmi M.Ak@test.com', '$2y$10$H48oAv7YcqA6tW2lJpZijuGKMmub7YhOchpji1.WftCgTLG8Oq0qG', 2, 2, NULL, NULL, NULL),
+(27, 'Jamalia Widiastuti', 'Zizi Laksmiwati@test.com', '$2y$10$C4f5xAzObRCuDZBe7NgX9euEvr.BR/ZwoHSRgVsEcPPerKhey8jLW', 2, 4, NULL, NULL, NULL),
+(28, 'Banara Adinata Prasetyo', 'Ina Karen Hassanah@test.com', '$2y$10$veEk0kRdoXfM5fpXoD0R8OOWIzhUxitjGAe/ij2ekDanrNHOWQml6', 2, 4, NULL, NULL, NULL),
+(29, 'Jaya Slamet Saputra', 'Fitria Maida Hassanah@test.com', '$2y$10$f7CSvrZRDAlQuODPW6Otm.KYdTI1C399XSrg7lfiyyOuUE.hwIGQq', 2, 4, NULL, NULL, NULL),
+(30, 'Widya Pratiwi M.TI.', 'Karen Janet Uyainah M.TI.@test.com', '$2y$10$tcPNjAy9Wch1xanpKNXFieMw55xOjtdD3vQH84/Ce63Q1SyFx/vOu', 2, 5, NULL, NULL, NULL),
+(31, 'Hafizh', 'a@a.com', '$2y$10$aW0TZxg0DuTAcfvr0csOb.sxdocCwqjMkPg6pLEvflTKqmunupoOK', 2, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user_groups`
+--
+
+CREATE TABLE `user_groups` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `group_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `user_groups`
+--
+
+INSERT INTO `user_groups` (`id`, `user_id`, `group_id`) VALUES
+(2, 2, 3),
+(3, 9, 2),
+(4, 28, 2),
+(5, 16, 1),
+(6, 11, 3),
+(7, 4, 5),
+(8, 27, 3),
+(9, 22, 4),
+(10, 30, 3),
+(11, 25, 3),
+(17, 31, 4);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `autographs`
+--
+ALTER TABLE `autographs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `autographs_user_id_foreign` (`user_id`);
+
+--
+-- Indeks untuk tabel `classifications`
+--
+ALTER TABLE `classifications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `classrooms`
+--
+ALTER TABLE `classrooms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indeks untuk tabel `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `groups_leadergroupid_foreign` (`LeaderGroupID`);
+
+--
+-- Indeks untuk tabel `inbox_mails`
+--
+ALTER TABLE `inbox_mails`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `mail_concepts`
+--
+ALTER TABLE `mail_concepts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `mail_corrections`
+--
+ALTER TABLE `mail_corrections`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indeks untuk tabel `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indeks untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indeks untuk tabel `user_groups`
+--
+ALTER TABLE `user_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `autographs`
+--
+ALTER TABLE `autographs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT untuk tabel `classifications`
+--
+ALTER TABLE `classifications`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT untuk tabel `classrooms`
+--
+ALTER TABLE `classrooms`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT untuk tabel `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `inbox_mails`
+--
+ALTER TABLE `inbox_mails`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT untuk tabel `mail_concepts`
+--
+ALTER TABLE `mail_concepts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT untuk tabel `mail_corrections`
+--
+ALTER TABLE `mail_corrections`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT untuk tabel `user_groups`
+--
+ALTER TABLE `user_groups`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `autographs`
+--
+ALTER TABLE `autographs`
+  ADD CONSTRAINT `autographs_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `groups`
+--
+ALTER TABLE `groups`
+  ADD CONSTRAINT `groups_leadergroupid_foreign` FOREIGN KEY (`LeaderGroupID`) REFERENCES `users` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
