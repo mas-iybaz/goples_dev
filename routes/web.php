@@ -19,6 +19,7 @@ use App\Http\Controllers\Siswa\Archivist\ArchivistDisposition;
 use App\Http\Controllers\Siswa\Archivist\ArchivistInboxRetention;
 use App\Http\Controllers\Siswa\Archivist\ArchivistOutbox;
 use App\Http\Controllers\Siswa\Secretary\SecretaryDisposition;
+use App\Http\Controllers\Siswa\Secretary\SecretarySchedule;
 use App\Http\Controllers\Siswa\Leader\LeaderDashboardController;
 use App\Http\Controllers\Siswa\Leader\LeaderInboxMailsContoller;
 use App\Http\Controllers\Siswa\Secretary\SecretaryClassification;
@@ -213,9 +214,15 @@ Route::middleware(['auth', 'role:2'])->group(function () {
             Route::post('/add_disposition/{id}', [SecretaryDisposition::class, 'store'])->name('secretary_dispositon_add');
             //konsep surat
             Route::get('/konsep_surat', [SecretaryConcept::class, 'index'])->name('data_concept');
+            // Schedule
+            Route::prefix('schedule')->group(function () {
+                Route::get('/', [SecretarySchedule::class, 'index'])->name('secretary.schedule.index');
+                Route::post('/', [SecretarySchedule::class, 'store'])->name('secretary.schedule.store');
+                Route::delete('/{schedule}', [SecretarySchedule::class, 'destroy'])->name('secretary.schedule.destroy');
+                Route::get('/ajax', [SecretarySchedule::class, 'ajax'])->name('secretary.schedule.ajax');
+                Route::post('/pdf', [SecretarySchedule::class, 'exportPdf'])->name('secretary.schedule.pdf');
+            });
             //surat keluar
-
-
             Route::post('/file_outbox/{id}', [SecretaryOutbox::class, 'upload_mail'])->name('file_outbox');
             Route::get('/outbox', [SecretaryOutbox::class, 'index'])->name('outbox_data');
             Route::get('/buat_surat/{id}', [SecretaryOutbox::class, 'createOutbox'])->name('create_outbox');

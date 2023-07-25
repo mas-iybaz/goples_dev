@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Schedule;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -28,5 +29,10 @@ class Group extends Model
     public function UserGroup()
     {
         $this->hasOne(UserGroup::class);
+    }
+
+    public function Schedules()
+    {
+        $this->hasMany(Schedule::class);
     }
 }

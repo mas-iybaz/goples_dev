@@ -62,6 +62,6 @@ class User extends Authenticatable
 
     public function UserGroup()
     {
-        $this->hasOne(UserGroup::class);
+        return $this->hasOne(UserGroup::class);
     }
 }

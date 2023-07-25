@@ -47,6 +47,11 @@
             background: url('{{ URL::asset('assets/details_close.png') }}') no-repeat center center;
         }
     </style>
+
+    <!-- Custom styles for this template-->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
+
+    @yield('scriptHeader')
 </head>
 
 <body>

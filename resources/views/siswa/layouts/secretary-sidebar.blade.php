@@ -27,6 +27,10 @@
                     Masuk</span></a>
         </li>
         <li>
+            <a href="{{ route('secretary.schedule.index') }}" class="waves-effect"><i
+                    class="mdi mdi-calendar"></i><span>Penjadwalan</span></a>
+        </li>
+        <li>
             <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="mdi mdi-black-mesa"></i><span>Olah
                     Surat Keluar</span></a>
             <ul class="sub-menu" aria-expanded="false">
